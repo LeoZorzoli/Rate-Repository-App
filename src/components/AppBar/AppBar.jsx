@@ -1,15 +1,15 @@
 import React from 'react';
-import { View, StyleSheet, Text, ScrollView } from 'react-native';
+import { View, StyleSheet, ScrollView } from 'react-native';
 import Constants from 'expo-constants';
+import { Link } from 'react-router-native';
+
+import AppBarTab from './AppBarTab.jsx';
 
 const styles = StyleSheet.create({
   container: {
     paddingTop: Constants.statusBarHeight,
     backgroundColor: '#24292e',
-    paddingBottom: 4
-  },
-  text: {
-    color: 'white',
+    padding: 4
   }
 });
 
@@ -17,7 +17,8 @@ const AppBar = () => {
   return (
     <View style={styles.container}>
       <ScrollView horizontal>
-        <Text style={styles.text}>Repositories</Text>
+        <Link to='/' component={AppBarTab} >Repositories</Link>
+        <Link to='/singin' component={AppBarTab} >Sing In</Link>
       </ScrollView>
     </View>
   );

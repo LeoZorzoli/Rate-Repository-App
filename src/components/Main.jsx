@@ -1,8 +1,10 @@
 import React from 'react';
-import { StyleSheet, View, TouchableWithoutFeedback } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { Route, Switch, Redirect } from 'react-router-native';
 
 import RepositoryList from './RepositoryList.jsx';
-import AppBar from './AppBar.jsx';
+import SingIn from './SingIn.jsx';
+import AppBar from './AppBar/AppBar.jsx';
 
 const styles = StyleSheet.create({
   container: {
@@ -15,10 +17,16 @@ const styles = StyleSheet.create({
 const Main = () => {
   return (
     <View style={styles.container}>
-      <TouchableWithoutFeedback>
-          <AppBar />
-      </TouchableWithoutFeedback>
-      <RepositoryList />
+      <AppBar />
+      <Switch>
+        <Route path="/" exact>
+          <RepositoryList />
+        </Route>
+        <Route path="/singin">
+          <SingIn />
+        </Route>
+        <Redirect to="/" />
+      </Switch>
     </View>
   );
 };
